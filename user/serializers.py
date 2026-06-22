@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
             "password",
             "is_staff",
         )
-        read_only_fields = ("id", "is_staff"),
+        read_only_fields = ("id", "is_staff")
         extra_kwargs = {
             "password": {
                 "write_only": True,
@@ -22,3 +22,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_date):
         return get_user_model().objects.create_user(**validated_date)
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop("password", None)
+        if password:
+            instance.set_password(password)
+        return super().update(instance, validated_data)
