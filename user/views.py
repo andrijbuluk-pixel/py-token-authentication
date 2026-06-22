@@ -4,4 +4,4 @@ from user.serializers import UserSerializer
 
 
 class CreateUser(generics.CreateAPIView):
-    generic_serializer_class = UserSerializer
+    serializer_class = UserSerializer
