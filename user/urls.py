@@ -1,5 +1,4 @@
-from django.contrib.auth.views import LogoutView
-from rest_framework.urls import path
+from django.urls import path
 
 from user.views import (
     CreateUser,
