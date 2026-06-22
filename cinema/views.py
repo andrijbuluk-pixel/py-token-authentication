@@ -164,7 +164,7 @@ class OrderViewSet(
     pagination_class = OrderPagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
-    http_method_names = ["get", "post", "put"]
+    http_method_names = ["get", "post"]
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
